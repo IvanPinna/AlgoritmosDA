@@ -51,9 +51,20 @@ int* ordenarporfusion(int* vector, int tam){
     }
     else //Dividir el array en dos subvectores.
     {
-        int * u = ordenarporfusion(); 
-        int * v = ordenarporfusion();
-        fusionar(u , v, tam1, tam2);
+        int mitad = tam/2;
+        int* v, u = ordenarporfusion(vector, mitad);
+        
+        if(tam%2 != 0)
+        {
+            v = ordenarporfusion(*(vector+mitad), mitad + 1);
+            fusionar(u , v, mitad, mitad+1);    
+        }
+        else
+        {
+            v = ordenarporfusion(*(vector+mitad), mitad);
+            fusionar(u , v, mitad, mitad);
+        }   
+        
     }
     
     return vector;
@@ -64,7 +75,7 @@ int main()
 {
     int tam = 13;
     int p[13] = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9};
-    int* o = ordenarfusion(p, tam);
+    int* o = ordenarporfusion(p, tam);
     
     for(int i = 0; i < tam; ++i)
         cout << o[i] << endl;
