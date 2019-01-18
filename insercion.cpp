@@ -1,53 +1,32 @@
-#include <iostream>
-#include <string>
-#include <vector>
-
-using namespace std;
-
-int* insercion(int* vector, int tam){
-    int x, j;
-    
-    for(int i = 1; i < tam; ++i)
-    {
-        x = vector[i];
-        j = i - 1;
-        
-        while( j >= 0 && x < vector[j])
-        {
-            vector[j+1] = vector[j];
-            --j;
-        }
-        vector[j+1] = x;
-    }
-    
-    return vector;
+#include <iostream>                                                                                                                                                    
+#include <stdlib.h>                                                                                                                                                    
+                                                                                                                                                                       
+using namespace std;                                                                                                                                                   
+                                                                                                                                                                       
+void insercion(int vector[], int ini, int fin) //Funciona                                                                                                              
+{                                                                                                                                                                      
+  int x, j;                                                                                                                                                            
+  for(int i = 1; i < fin; ++i)                                                                                                                                     \
+                                                                                                                                                                       
+  {                                                                                                                                                                    
+    x = vector[i];                                                                                                                                                     
+    j = i - 1;                                                                                                                                                         
+    while( j >= 0 && x < vector[j])                                                                                                                                    
+    {                                                                                                                                                                  
+      vector[j+1] = vector[j];                                                                                                                                         
+      --j;                                                                                                                                                             
+    }                                                                                                                                                                  
+    vector[j+1] = x;                                                                                                                                                   
+  }                                                                                                                                                                    
 }
 
-/*
-int* ordenarporfusion(int* vector, int tam){
-    
-    if(tam < 3)
-    {
-        insercion(vector, tam); //Ordenamos por insercion.
-    }
-    else //Dividir el array en dos subvectores.
-    {
-        ordenarporfusion(); 
-        ordenarporfusion();
-    }
-    
-    return vector;
-}
-*/
-
-int main()
-{
-    int tam = 13;
-    int p[13] = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9};
-    int* o = insercion(p, tam);
-    
-    for(int i = 0; i < tam; ++i)
-        cout << o[i] << endl;
-    
-    
-}
+int main()                                                                                                                                                             
+{                                                                                                                                                                      
+    int tam = 10;                                                                                                                                                      
+    int p[10]  = {9, 8, 4, 7, 3, 6, 5, 0, 1, 2};                                                                                                                               
+    insercion(p, 0, tam);
+    //insercionDirecta(p, 0, tam);                                                                                                                                          
+    for(int i =0; i < 10; ++i)                                                                                                                                         
+        cout << p[i] << endl;                                                                                                                                          
+                                                                                                                                                                       
+} 
